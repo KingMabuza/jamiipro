@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: rgb(85, 79, 68);
+}
+
+#banner {
+    background-image: url("bg.fa1de7542905.png");
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.intro{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#introduction h3, #afcfta_intro h3{
+    color: rgb(107, 128, 94);
+}
+
+#introduction{
+    padding-top: 25vh ;
+}
+
+.cta{
+    background-color: rgb(107, 128, 94);
+    margin-bottom: 3vh;
+}
+
+#afcfta_intro{
+    background-color: rgb(249, 247, 244);
+    padding-top: 20vh;
+}
+
+#afcfta_intro img:hover{
+    cursor: pointer;
+}
+
+#news_intro{
+    padding-top: 20vh;
+}
+
+#contact_banner{
+    background-image: url("contact.d092f36b0903.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 45vh;
+    width: 100vw;
+}
+
+#footer{
+    background-color: rgb(107, 128, 94);
+}
+
+a{
+    color: white;
+}
