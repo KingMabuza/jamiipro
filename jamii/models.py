@@ -15,7 +15,7 @@ class Post(models.Model):
 
 class Exporter(models.Model):
     name = models.CharField(max_length=255)
-    gdp = models.IntegerField()
+    gdp = models.DecimalField(max_digits=19, decimal_places=2)
     edb = models.IntegerField()  # EaseOfDoingBusiness
 
     def __str__(self):
@@ -31,7 +31,7 @@ class Importer(models.Model):
 
 class SubIndustry(models.Model):
     name = models.CharField(max_length=255)
-    value = models.IntegerField()
+    value = models.DecimalField(max_digits=19, decimal_places=2)
     year = models.IntegerField()
 
     def __str__(self):
@@ -43,7 +43,7 @@ class Industry(models.Model):
     exporter = models.ForeignKey(Exporter, on_delete=models.CASCADE)
     importer = models.ForeignKey(Importer, on_delete=models.CASCADE)
     sub_industry = models.ForeignKey(SubIndustry, on_delete=models.CASCADE)
-    value = models.IntegerField()
+    value = models.DecimalField(max_digits=19, decimal_places=2)
     year = models.IntegerField()
 
     def __str__(self):
