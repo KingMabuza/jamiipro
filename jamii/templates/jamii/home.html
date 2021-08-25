@@ -1,0 +1,99 @@
+{% extends 'jamii/layout.html' %}
+{% load static %}
+{% block title %} Welcome | Jamii {% endblock title %}
+{% block content %}
+    <div id="banner">
+        <div class=" container intro">
+            <h1 class="text-white">Welcome To Jamii, Helping African Organisations Reach Their Trade Objectives</h1>
+            <a class="btn cta text-white" href="{% url 'subscribe' %}">Join The Free Trade Movement</a>
+        </div>
+        <!--<a href="https://www.vecteezy.com/free-vector/nature">Nature Vectors by Vecteezy</a>-->
+    </div>
+    <div id="introduction">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <h3>Boosting Trade By Minimizing The Information Gap</h3>
+              <p>Jamii a product of the Shared Value Africa Initiative(SVAI) and the Pan African Chamber of Commerce(PACCI), aims to boost trade within the
+                    african continent through the minimization of the information gap faced by a vast number of SMMEs. With the African continental free trade area(AfCFTA), which stands to open up a customs-free market of over 1.3billion people, Jamii seeks to be a one source of truth on everything AfCFTA and african trade in its entirety, enabling organizations to make trade decisions with factual, easy to access information. </p>
+              <a class="btn cta text-white" href="{% url 'about' %}">Learn More</a>
+            </div>
+            <div class="col-sm">
+              <iframe width="100%" height="350" src="https://www.youtube.com/embed/ar0ItKPq2cA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="afcfta_intro">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <h3>AfCFTA</h3>
+              <p>The African Continental Free Trade Area (AfCFTA) Agreement entered into force in May 2019. The AfCFTA is ultimately intended to create a comprehensive African market; nonetheless, it has set in motion a series of difficult and likely lengthy negotiations. Although this approach will not result in full free trade in Africa, it will result in a reduction in tariffs, which has the potential to improve regional value chains and promote production and commerce. It is, however, far too early to debate changing the European Union's trade policy toward Africa, or to make this a priority for Germany's next Council presidency. In any case, Germany and the European Union ought to proceed to take after and back the method of building up the AfCFTA, which is a critical political prepare with noteworthy long-term financial potential for Africa. Fifty-four African states have marked the Assentation Setting up the AfCFTA, of which twenty-eight have too confirmed (as of October 2019). In substance, the point of the AfCFTA is to cancel taxes on 90 percent of goods tariff lines. For the foremost delicate 7 percent of items, the method will be staged over a period of ten to fifteen a long time; 3 percent of tax lines (not surpassing 10 percent of the esteem of imports) will appreciate lasting security.</p>
+                <p>The African Continental Free Trade Region (AfCFTA) agreement will establish the world's largest free trade area by number of countries participating. The agreement brings together 1.3 billion people from 55 countries, with a total GDP of US$3.4 trillion. It has the potential to raise 30 million people out of extreme poverty but realizing that promise would require major legislative reforms and trade facilitation measures.</p>
+                <p>The scope of AfCFTA is huge. The understanding will diminish taxes among part nations and cover approach ranges such as exchange help and administrations, as well as regulatory measures such as clean measures and specialized obstructions to exchange. Full usage of AfCFTA would reshape markets and economies over the locale and boost yield within the administrations, fabricating, and common assets divisions. As the worldwide economy is in turmoil due to the COVID-19 widespread, creation of the endless AfCFTA territorial market could be a major opportunity to assist African nations broaden their sends out, quicken development, and draw in remote coordinate speculation.</p>
+            </div>
+            <div class="col-sm">
+              <img src="{% static 'jamii/afcfta_bg.png' %}" width="100%" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>
+                <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">AfCFTA</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+              </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="news_intro">
+         <div class="container">
+                <h3>News</h3>
+         </div>
+         {% for new, des, i, url, author in mylist %}
+         <div class="container">
+            <br/>
+            <div class="card">
+                <img src="{{ i }}" alt="banner" style="width:100%" height="450px">
+                <div class="container">
+                    <h4><b>{{ new }}</b></h4>
+                    <p>{{ des }}</p>
+                    <a class="btn cta text-white" href="{{ url }}">Read More</a>
+                </div>
+            </div>
+            <br/>
+         </div>
+        {% endfor %}
+    </div>
+
+    <div class="blog_intro">
+        <div class="container">
+            <h3>Blog</h3>
+            <br/>
+        </div>
+        <div class="container text-center">
+            <div class="card" id="card">
+                <img src="{{ blog_post.cover.url }}" alt="globe" width="500px"/>
+                <div class="container">
+                    <h4>{{ blog_post.title }}</h4>
+                    <p>{{ blog_post.description }}</p>
+                    <p>{{ blog_post.date }}</p>
+                    <p>{{ blog_post.body | safe }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
