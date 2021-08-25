@@ -78,10 +78,11 @@ WSGI_APPLICATION = 'jamiipro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'splplqeu',
-        'USER': 'splplqeu',
-        'PASSWORD': '7BGJv9WH6oivYcZKAYgwPUAh2Pyol2w-',
-        'HOST': 'ziggy.db.elephantsql.com',
+        'NAME': 'df9an7bsg8rpkg',
+        'USER': 'uuximejqynrksu',
+        'PASSWORD': '3401933002b0e4d1240cf03a58353e97640d11402104a0052cebd6eb9d937606',
+        'HOST': 'ec2-35-153-91-18.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 

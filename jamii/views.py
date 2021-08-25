@@ -28,7 +28,7 @@ def index(request):
         author.append(myarticles['author'])
     mylist = zip(news, desc, img, url, author)
 
-    obj = Post.objects.get(id=2)
+    obj = Post.objects.get(id=1)
     blog_post = {
         'title': obj.title,
         'cover': obj.cover,
