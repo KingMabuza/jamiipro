@@ -5,5 +5,5 @@ from .models import *
 admin.site.register(Post)
 admin.site.register(Exporter)
 admin.site.register(Importer)
-admin.site.register(Industry)
-admin.site.register(SubIndustry)
+admin.site.register(Category)
+
