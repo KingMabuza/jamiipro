@@ -36,6 +36,7 @@ body{
     margin-bottom: 3vh;
 }
 
+
 #afcfta_intro{
     background-color: rgb(249, 247, 244);
     padding-top: 20vh;
@@ -66,3 +67,22 @@ a{
     color: white;
 }
 
+.signup_section{
+    margin-top: 10vh;
+}
+
+#mc_embed_signup h2{
+    padding-top: 8vh;
+}
+
+#mc_embed_signup .button {
+    background-color: rgb(107, 128, 94);
+}
+
+#mc_embed_signup .button:hover{
+    background-color: rgb(80, 95, 70);
+}
+
+#notification{
+    padding-top: 8vh;
+}

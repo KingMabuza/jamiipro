@@ -1,0 +1,14 @@
+{% extends 'jamii/layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Login | Jamii {% endblock title %}
+{% block content %}
+    <div class="signup_section container">
+        <h2>You Have logged out successfully</h2>
+        <div class="border-top pt-3">
+            <small class="txt-muted">
+                <a href="{% url 'login' %}" class="ml-2 text-black">Log In Again</a>
+            </small>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'jamii/layout.html' %}
+{% block title %} Profile | Jamii {% endblock title %}
+{% block content %}
+    <div class="signup_section container">
+        <h5><span>Username:</span><span><strong>{{ user.username }}</strong></span></h5>
+        <br/>
+        <h5><span>Email:</span><span><strong>{{ user.email }}</strong></span></h5>
+        <br/>
+        <a class="btn cta text-white" href="{% url 'password-change' %}">Change Password</a>
+    </div>
+{% endblock content %}

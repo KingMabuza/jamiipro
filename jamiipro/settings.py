@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'admin_interface',
     'colorfield',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,6 +127,17 @@ MEDIA_ROOT = Path(BASE_DIR, 'media')
 
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'jamiiwebsite@gmail.com'
+EMAIL_HOST_PASSWORD = 'qcumgxdzctnqebry'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

@@ -1,6 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from newsapi import NewsApiClient
 from .models import Post
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib import messages
+from .forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
 
 
 def index(request):
@@ -52,10 +58,12 @@ def contact(request):
     return render(request, 'jamii/contact.html')
 
 
+@login_required
 def events(request):
     return render(request, 'jamii/events.html')
 
 
+@login_required
 def explorer(request):
     return render(request, 'jamii/explorer.html')
 
@@ -65,21 +73,41 @@ def glossary(request):
 
 
 def login(request):
-    return render(request, 'jamii/login.html')
+    form = UserCreationForm()
+    return render(request, 'jamii/login.html', {'form': form})
 
 
 def news(request):
     return render(request, 'jamii/news.html')
 
 
+@login_required
 def opportunities(request):
     return render(request, 'jamii/opportunities.html')
 
 
 def signup(request):
-    return render(request, 'jamii/signup.html')
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Accounted Created Successfully')
+            return redirect('login')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'jamii/signup.html', {'form': form})
 
 
 def subscribe(request):
     return render(request, 'jamii/subscribe.html')
 
+
+@login_required
+def profile(request):
+    return render(request, 'jamii/profile.html')
+
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('profile')

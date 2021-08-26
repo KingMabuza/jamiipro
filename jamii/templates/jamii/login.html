@@ -1,5 +1,22 @@
 {% extends 'jamii/layout.html' %}
+{% load crispy_forms_tags %}
 {% block title %} Login | Jamii {% endblock title %}
 {% block content %}
+    <div class="signup_section container">
+        <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Log In</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <br/>
+        <div class="form-group"><button class="btn cta text-white" type="submit">Login</button><span><a href="{% url 'password_reset' %}" class="text-black">Forgot Password?</a></span></div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="txt-muted">
+            Need An Account?<a href="{% url 'signup' %}" class="ml-2 text-black">Sign Up</a>
+        </small>
+    </div>
+    </div>
 
 {% endblock content %}
