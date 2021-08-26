@@ -1,5 +1,23 @@
 {% extends 'jamii/layout.html' %}
 {% block title %} Blog | Jamii {% endblock title %}
 {% block content %}
-
+    <div class="container">
+        {% for post in posts %}
+            <div class="container">
+            <h3>Blog</h3>
+            <br/>
+        </div>
+        <div class="container text-center">
+            <div class="card" id="card">
+                <img src="{{ post.cover.url }}" alt="globe" width="500px" class="center"/>
+                <div class="container">
+                    <h4>{{ post.title }}</h4>
+                    <p>{{ post.date|date:"F d, Y"}}</p>
+                    <p>{{ post.description }}</p>
+                    <a class="btn cta text-white" href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

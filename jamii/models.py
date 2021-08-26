@@ -7,6 +7,7 @@ from django.utils import timezone
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, null=True)
     description = models.CharField(max_length=255)
     body = RichTextField()
     date_posted = models.DateTimeField(default=timezone.now)

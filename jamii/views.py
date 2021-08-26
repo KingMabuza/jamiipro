@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views import generic
 from newsapi import NewsApiClient
 from .models import Post
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
@@ -7,10 +8,12 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
+from .models import Post
+
+newsapi = NewsApiClient(api_key="922bccdaca334a0daa16d903ff1b8e26")
 
 
 def index(request):
-    newsapi = NewsApiClient(api_key="922bccdaca334a0daa16d903ff1b8e26")
     all_articles = newsapi.get_everything(q='afcfta',
                                           language='en',
                                           sort_by='relevancy',
@@ -51,7 +54,8 @@ def about(request):
 
 
 def blog(request):
-    return render(request, 'jamii/blog.html')
+    posts = Post.objects.all()
+    return render(request, 'jamii/blog.html', {'posts': posts})
 
 
 def contact(request):
@@ -78,7 +82,30 @@ def login(request):
 
 
 def news(request):
-    return render(request, 'jamii/news.html')
+    all_articles = newsapi.get_everything(q='afcfta',
+                                          language='en',
+                                          sort_by='relevancy',
+                                          )
+
+    articles = all_articles['articles']
+
+    desc = []
+    news = []
+    img = []
+    url = []
+    author = []
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+        news.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        url.append(myarticles['url'])
+        author.append(myarticles['author'])
+    mylist = zip(news, desc, img, url, author)
+
+    return render(request, 'jamii/news.html', context={"mylist": mylist})
 
 
 @login_required
