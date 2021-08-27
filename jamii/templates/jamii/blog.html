@@ -2,7 +2,17 @@
 {% block title %} Blog | Jamii {% endblock title %}
 {% block content %}
     <div class="container">
+
         {% for post in posts %}
+            <div class="card mb-3">
+                  <img src="{{ post.cover.url }}" class="card-img-top" alt="{{ post.title }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.description }}</p>
+                    <p class="card-text"><small class="text-muted">{{ post.date_posted }}</small></p>
+                  </div>
+            </div>
+
             <div class="container">
             <h3>Blog</h3>
             <br/>
