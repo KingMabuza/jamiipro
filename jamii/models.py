@@ -44,3 +44,6 @@ class Exporter(models.Model):
 class Glossary(models.Model):
     name = models.CharField(max_length=255)
     meaning = models.TextField(null=True)
+
+    def __str__(self):
+        return self.name
