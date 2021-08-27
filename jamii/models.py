@@ -47,3 +47,11 @@ class Glossary(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class About(models.Model):
+    name = models.CharField(max_length=255)
+    body = RichTextField()
+
+    def __str__(self):
+        return self.name

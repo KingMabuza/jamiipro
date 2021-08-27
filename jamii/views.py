@@ -7,11 +7,11 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
-from .models import Post
+from .models import Post, Glossary, About
 from django.core.mail import send_mail
 from django.conf import settings
 
-newsapi = NewsApiClient(api_key="922bccdaca334a0daa16d903ff1b8e26")
+newsapi = NewsApiClient(api_key="de8d7936b3ea407a896b753b35430fa3")
 
 
 def index(request):
@@ -52,7 +52,8 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'jamii/about.html')
+    abouts = About.objects.all()
+    return render(request, 'jamii/about.html', {'abouts': abouts})
 
 
 def blog(request):
@@ -92,7 +93,8 @@ def explorer(request):
 
 
 def glossary(request):
-    return render(request, 'jamii/glossary.html')
+    term = Glossary.objects.all()
+    return render(request, 'jamii/glossary.html', {'term': term})
 
 
 def login(request):

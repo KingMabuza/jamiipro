@@ -1,5 +1,17 @@
 {% extends 'jamii/layout.html' %}
 {% block title %} About | Jamii {% endblock title %}
 {% block content %}
+    <div id="about_banner">
+
+    </div>
+    <div class="aboutpage_intro">
+        <h1 class="text-white">About Us</h1>
+    </div>
+    <div class="container pt-5" id="about_intro">
+        {% for abouts in abouts %}
+            <h3 class="text-center">{{ abouts.name }}</h3>
+            <p class="text-center">{{ abouts.body | safe }}</p>
+        {% endfor %}
+    </div>
 
 {% endblock content %}

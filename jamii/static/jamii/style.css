@@ -63,7 +63,7 @@ body{
 }
 
 #footer{
-    background-color: #198754;
+    background-color: #505f46;
 }
 #footer h5{
     color: yellow !important;
@@ -100,4 +100,29 @@ a:hover{
 .sticky-footer{
     position: sticky;
     top: 100%;
+}
+
+
+#about_banner{
+    background-image: url("AfCFTA.jpg");
+    height: 50vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    background-position: center;
+}
+
+.aboutpage_intro{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#about_intro{
+    padding-top: 20vh;
 }
