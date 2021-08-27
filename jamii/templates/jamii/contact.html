@@ -1,5 +1,31 @@
 {% extends 'jamii/layout.html' %}
 {% block title %} Contact | Jamii {% endblock title %}
 {% block content %}
+    <div id="contact_banner">
+
+    </div>
+    <div class="container">
+        <h4 class="text-center">{{ notification }}</h4>
+        <h3 class="text-center pt-3">Have a question or comment, please contact us on the form below.</h3>
+        <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group pt-3">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" class="form-control" name="name" placeholder="Name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email_sender" class="form-control" placeholder="Email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" required>
+
+                <label for="message">Your Message</label>
+                <input type="text" id="message" name="message" class="form-control" placeholder="Message" required>
+            </div>
+                <br/>
+                <button class="btn cta" type="submit">Send Message</button>
+        </form>
+        <br/>
+    </div>
 
 {% endblock content %}

@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from newsapi import NewsApiClient
-from .models import Post
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from .models import Post
+from django.core.mail import send_mail
+from django.conf import settings
 
 newsapi = NewsApiClient(api_key="922bccdaca334a0daa16d903ff1b8e26")
 
@@ -44,6 +45,7 @@ def index(request):
         'description': obj.description,
         'date': obj.date_posted,
         'body': obj.body,
+        'slug': obj.slug
     }
 
     return render(request, 'jamii/home.html', context={"mylist": mylist, "blog_post": blog_post})
@@ -59,7 +61,24 @@ def blog(request):
 
 
 def contact(request):
-    return render(request, 'jamii/contact.html')
+    if request.method == 'POST':
+
+        notification = 'Thank you for your email, we will get back to you shortly'
+
+        name = request.POST.get('name')
+        email_sender = request.POST.get('email_sender')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        send_mail(
+            subject=subject,
+            message=f"NAME: {name} \n \n EMAIL ADDRESS: {email_sender} \n \n MESSAGE: {message}",
+            from_email=email_sender,
+            recipient_list=['afcftajamii@gmail.com']
+        )
+        return render(request, 'jamii/contact.html', {'notification': notification})
+    else:
+        return render(request, 'jamii/contact.html')
 
 
 @login_required

@@ -25,5 +25,5 @@ urlpatterns = [
          name='password_reset_confirm'),
     path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(template_name='jamii/password_reset_complete.html'),
          name='password_reset_complete'),
-    path('password-change', views.PasswordsChangeView.as_view(template_name='jamii/change_password.html'), name='password-change')
+    path('password-change', views.PasswordsChangeView.as_view(template_name='jamii/change_password.html'), name='password-change'),
 ]

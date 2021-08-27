@@ -1,14 +1,5 @@
 {% extends 'jamii/layout.html' %}
-{% block title %} {{ blog_post.title }} | Jamii {% endblock title %}
+{% block title %} Blog-Detail | Jamii {% endblock title %}
 {% block content %}
-    <div class="container text-center">
-            <div class="card" id="card">
-                <img src="{{ blog_post.cover.url }}" alt="globe" width="500px" class="center"/>
-                <div class="container">
-                    <h4>{{ blog_post.title }}</h4>
-                    <p>{{ blog_post.date|date:"F d, Y"}}</p>
-                    <p>{{ blog_post.content | safe }}</p>
-                </div>
-            </div>
-        </div>
+
 {% endblock content %}

@@ -2,6 +2,9 @@ body{
     margin: 0;
     padding: 0;
     color: rgb(85, 79, 68);
+    min-height: 100vh;
+    font-family: 'Lato', sans-serif;
+
 }
 
 #banner {
@@ -55,16 +58,23 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 45vh;
-    width: 100vw;
+    height: 50vh;
+    width: 100%;
 }
 
 #footer{
-    background-color: rgb(107, 128, 94);
+    background-color: #198754;
 }
-
+#footer h5{
+    color: yellow !important;
+}
 a{
     color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: yellow;
 }
 
 .signup_section{
@@ -85,4 +95,9 @@ a{
 
 #notification{
     padding-top: 8vh;
+}
+
+.sticky-footer{
+    position: sticky;
+    top: 100%;
 }
