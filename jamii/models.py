@@ -2,6 +2,10 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils import timezone
 
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 
@@ -23,23 +27,30 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
 class Importer(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
-
 class Exporter(models.Model):
-    name = models.CharField(max_length=255)
-    gdp = models.DecimalField(max_digits=19, decimal_places=2)
-    edb = models.IntegerField()  # EaseOfDoingBusiness
-    value = models.DecimalField(max_digits=19, decimal_places=2, default=0.00)
+
+    Type_of_Export = (
+        ('Manufacturing', 'Manufacturing'),
+        ('Textile', 'Textile'),
+        )
+    List_of_Country =  (
+        ('RSA', 'RSA'),
+        ('Angola', 'Angola'),
+    ) 
+    Export_Industry = models.TextField(max_length=500,choices=Type_of_Export, blank=True)
+    Export_From = models.TextField(max_length=500,choices=List_of_Country, blank=True)
+    Export_To = models.TextField(max_length=500,choices=List_of_Country, blank=True)
+    Export_From_gdp = models.DecimalField(max_digits=19, decimal_places=2)
+    Export_From_edb = models.IntegerField()  # EaseOfDoingBusiness
 
     def __str__(self):
-        return self.name
-
+        return self.Export_Industry
 
 class Glossary(models.Model):
     name = models.CharField(max_length=255)
@@ -48,10 +59,36 @@ class Glossary(models.Model):
     def __str__(self):
         return self.name
 
-
 class About(models.Model):
     name = models.CharField(max_length=255)
     body = RichTextField()
 
     def __str__(self):
         return self.name
+
+class Profile(models.Model):
+    UserType = (
+        ('Entrepreneur', 'Entrepreneur'),
+        ('AFCFTA', 'AFCFTA'),
+    )
+    Origin = (
+        ('RSA', 'RSA'),
+        ('Angola', 'Angola'),
+    )
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    Type_of_user = models.TextField(max_length=500,choices=UserType, blank=True)
+    User_origin = models.TextField(max_length=500,choices=Origin, blank=True)
+    # domain_of_Knowledge = models.CharField(max_length=500, choices=Domain, blank=True)
+    # type_of_paper = models.CharField(max_length=500, choices=Paper, blank=True)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+

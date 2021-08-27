@@ -2,4 +2,26 @@
 {% block title %} Explorer | Jamii {% endblock title %}
 {% block content %}
 
+{% if export_obj %}
+<h2 >Woop woop!!</h2>
+    {% for obj in export_obj %}
+    <div class="div">{{obj.Export_Industry}}</div>
+    <div class="div">{{obj.Export_From }}</div>
+    <div class="div">{{obj.Export_To }}</div>
+    <div class="div">{{obj.Export_From_gdp }}</div>
+    <div class="div">{{obj.Export_From_edb }}</div>
+
+    {% endfor %}
+   
+    <a class="btn btn-danger btn-block" href="{% url 'explorer' %}">Back for search</a>
+{% else %}
+<form method="POST" action="trade_explorer"  enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form }}
+    <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block">Submit </button>
+    </div>
+</form>
+{% endif %}
 {% endblock content %}
+

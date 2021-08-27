@@ -4,10 +4,10 @@ from django.views import generic
 from newsapi import NewsApiClient
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, ExportRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
-from .models import Post, Glossary, About
+from .models import Exporter, Post, Glossary, About
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -89,7 +89,19 @@ def events(request):
 
 @login_required
 def explorer(request):
-    return render(request, 'jamii/explorer.html')
+    Exporter_Objs = Exporter.objects.all().last()
+    if request.method == 'POST':
+        form = ExportRegisterForm(request.POST)
+        #user = User.objects.get(username=request.user.username)
+        if form.is_valid(): 
+            Export_Industry = form.cleaned_data.get('Export_Industry')
+            Export_From = form.cleaned_data.get('Export_From')
+            Export_To = form.cleaned_data.get('Export_To')
+            export_obj = Exporter.objects.filter(Export_Industry=Export_Industry, Export_From=Export_From,Export_To=Export_To )
+            print("************Our export object************",export_obj)
+        return render(request, 'jamii/explorer.html',{'export_obj': export_obj} )
+    form = ExportRegisterForm()
+    return render(request, 'jamii/explorer.html',{'export_objs': Exporter_Objs, "form":form } )
 
 
 def glossary(request):
