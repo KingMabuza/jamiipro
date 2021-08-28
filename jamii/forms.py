@@ -9,7 +9,8 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
+
 
 class ExportRegisterForm(forms.ModelForm):
     

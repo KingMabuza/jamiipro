@@ -8,9 +8,10 @@
     <div class="div">{{obj.Export_Industry}}</div>
     <div class="div">{{obj.Export_From }}</div>
     <div class="div">{{obj.Export_To }}</div>
-    <div class="div">{{obj.Export_From_gdp }}</div>
-    <div class="div">{{obj.Export_From_edb }}</div>
-
+    <div class="div">{{ obj.Export_Prohibitions | safe}}</div>
+    <div class="div">{{ obj.Export_License | safe}}</div>
+    <div class="div">{{ obj.Export_Sanitary_Phytosanitary_Measures | safe}}</div>
+    <div>{{ obj.Export_Taxes | safe }}</div>
     {% endfor %}
    
     <a class="btn btn-danger btn-block" href="{% url 'explorer' %}">Back for search</a>
