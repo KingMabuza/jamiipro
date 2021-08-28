@@ -21,20 +21,6 @@ class Post(models.Model):
         return self.title
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
-class Importer(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
 class Exporter(models.Model):
     Type_of_Export = (
         ('Manufacturing', 'Manufacturing'),
@@ -42,8 +28,11 @@ class Exporter(models.Model):
         ('Live Animals', 'Live Animals')
     )
     List_of_Country = (
-        ('RSA', 'RSA'),
+        ('South Africa', 'South Africa'),
         ('Angola', 'Angola'),
+        ('Botswana', 'Botswana'),
+        ('Eswatini', 'Eswatini'),
+        ('Mozambique', 'Mozambique')
     )
     Export_Industry = models.TextField(max_length=500, choices=Type_of_Export, blank=True)
     Export_From = models.TextField(max_length=500, choices=List_of_Country, blank=True)
@@ -65,9 +54,14 @@ class Glossary(models.Model):
         return self.name
 
 
-class About(models.Model):
+class Event(models.Model):
     name = models.CharField(max_length=255)
-    body = RichTextField()
+    slug = models.SlugField(max_length=255, null=True)
+    date = models.DateTimeField(default=timezone.now)
+    description = RichTextField(null=True)
+    location = models.CharField(max_length=255)
+    booking_url = models.URLField(null=True)
+    event_cover = models.ImageField(null=True, upload_to='images/')
 
     def __str__(self):
         return self.name

@@ -1,0 +1,14 @@
+{% extends 'jamii/layout.html' %}
+{% block title %} {{ event.title }} | Jamii {% endblock title %}
+{% block content %}
+    <div class="event_banner">
+        <img src="{{event.event_cover.url}}" alt="{{event.name}}" width="100%" height="450px"/>
+    </div>
+    <div class="container">
+        <h3 class="text-center pt-5">{{ event.name }}</h3>
+        <h5 class="text-center pt-1">{{ event.date }}</h5>
+        <h5 class="text-center">Location: {{ event.location }}</h5>
+        <p class="text-center">{{ event.description|safe }}</p>
+        <a class="btn cta text-white" href="{{ event.booking_url }}">RSVP</a>
+    </div>
+{% endblock content %}

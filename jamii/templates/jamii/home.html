@@ -60,39 +60,78 @@
         </div>
     </div>
 
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+              <h3>Objectives</h3>
+              <ul>
+                  <li>Create a unified continental market for products and services with free movement of people and capital, paving the way for the Continental Customs Union and the African Customs Union to be established faster.</li>
+                  <li>Improve the harmonization and coordination of trade liberalization and facilitation regimes and tools across RECs and Africa in general to increase intra-African trade.</li>
+                  <li>Resolve the issues of various and overlapping memberships while also speeding up regional and continental integration.</li>
+                  <li>Increase industry and firm competitiveness by taking advantage of opportunities for scale production, continental market access, and better resource reallocation.</li>
+                  <li>Africa's economic integration should be deepened in accordance with Agenda 2063.</li>
+                  <li>The establishment of a continental customs union.</li>
+                  <li>Intra-African trade should be liberalized.</li>
+                  <li>In regional economic communities, resolving the difficulties of overlapping memberships (RECs).</li>
+                  <li>Increasing one's competitiveness.</li>
+                  <li>Contributing to the free movement of money and people, as well as facilitating investment.</li>
+                  <li>Promoting socioeconomic growth that is both sustainable and inclusive, as well as gender equality and structural transformation.</li>
+                  <li>Industrialization is being promoted.</li>
+                  <li>Progressively eliminate tariffs and non-tariff barriers to goods trade.</li>
+                  <li>Progressively liberalize service trade.</li>
+                  <li>Cooperate on issues such as investment, intellectual property, and competition policy.</li>
+                  <li>Cooperate in all aspects of trade.</li>
+                  <li>Cooperate on customs issues and trade facilitation measures.</li>
+                  <li>Create a method for resolving disagreements about members' rights and obligations.</li>
+                  <li>Establish and maintain an institutional structure for the AfCFTA's implementation and management.</li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>AfCFTA Implementation</h3>
+
+            </div>
+        </div>
+    </div>
+
     <div id="news_intro">
          <div class="container">
                 <h3>News</h3>
          </div>
-         {% for new, des, i, url, author in mylist %}
-         <div class="container">
-            <br/>
-            <div class="card">
-                <img src="{{ i }}" alt="banner" style="width:100%" height="450px">
-                <div class="container">
-                    <h4><b>{{ new }}</b></h4>
-                    <p>{{ des }}</p>
-                    <a class="btn cta text-white" href="{{ url }}">Read More</a>
+        <div class="container">
+            <div class="row">
+            {% for new, des, i, url, author in mylist %}
+                <div class="col-sm-4">
+                    <div class="card" style="width: 18rem;">
+                       <img src="{{ i }}" class="card-img-top" alt="{{ new }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ new }}</h5>
+                            <p class="card-text">{{ des }}</p>
+                            <a href="{{ url }}" class="btn cta text-white">Read More</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <br/>
-         </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+        </div>
     </div>
 
-    <div class="blog_intro pb-3">
+    <div class="blog_intro pt-3">
         <div class="container">
             <h3>Blog</h3>
             <br/>
         </div>
-        <div class="container text-center">
-            <div class="card" id="card">
-                <img src="{{ blog_post.cover.url }}" alt="globe" width="500px" class="center"/>
-                <div class="container">
-                    <h4>{{ blog_post.title }}</h4>
-                    <p>{{ blog_post.description }}</p>
-                    <p>{{ blog_post.date|date:"F d, Y"}}</p>
-                    <a class="btn cta text-white" href="#">Read More</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{blog_post.cover.url }}" class="card-img-top" alt="globe">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ blog_post.title }}</h5>
+                            <p class="card-text">{{ blog_post.description }}</p>
+                            <a href="{% url 'blog_detail' blog_post.slug  %}" class="btn cta text-white">Read More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

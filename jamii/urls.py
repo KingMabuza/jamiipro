@@ -5,9 +5,11 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
+    path('blog/<slug:slug>/', views.BlogDetail.as_view(), name='blog_detail'),
     path('blog', views.blog, name='blog'),
     path('contact', views.contact, name='contact'),
     path('events', views.events, name='events'),
+    path('events/<slug:slug>/', views.EventDetail.as_view(), name='event_detail'),
     path('trade_explorer', views.explorer, name='explorer'),
     path('glossary', views.glossary, name='glossary'),
     path('login', auth_views.LoginView.as_view(template_name='jamii/login.html'), name='login'),

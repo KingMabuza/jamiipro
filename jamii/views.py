@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import UserRegisterForm, ExportRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
-from .models import Exporter, Post, Glossary, About
+from .models import Exporter, Post, Glossary, Event
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -52,13 +52,17 @@ def index(request):
 
 
 def about(request):
-    abouts = About.objects.all()
-    return render(request, 'jamii/about.html', {'abouts': abouts})
+    return render(request, 'jamii/about.html')
 
 
 def blog(request):
     posts = Post.objects.all()
     return render(request, 'jamii/blog.html', {'posts': posts})
+
+
+class BlogDetail(generic.DetailView):
+    model = Post
+    template_name = 'jamii/blog_detail.html'
 
 
 def contact(request):
@@ -84,7 +88,14 @@ def contact(request):
 
 @login_required
 def events(request):
-    return render(request, 'jamii/events.html')
+    posts = Post.objects.all()
+    event = Event.objects.all()
+    return render(request, 'jamii/events.html', {'posts': posts, 'event': event})
+
+
+class EventDetail(generic.DetailView):
+    model = Event
+    template_name = 'jamii/event_detail.html'
 
 
 @login_required
@@ -92,16 +103,16 @@ def explorer(request):
     Exporter_Objs = Exporter.objects.all().last()
     if request.method == 'POST':
         form = ExportRegisterForm(request.POST)
-        #user = User.objects.get(username=request.user.username)
-        if form.is_valid(): 
+        # user = User.objects.get(username=request.user.username)
+        if form.is_valid():
             Export_Industry = form.cleaned_data.get('Export_Industry')
             Export_From = form.cleaned_data.get('Export_From')
             Export_To = form.cleaned_data.get('Export_To')
-            export_obj = Exporter.objects.filter(Export_Industry=Export_Industry, Export_From=Export_From,Export_To=Export_To )
-            print("************Our export object************",export_obj)
-        return render(request, 'jamii/explorer.html',{'export_obj': export_obj} )
+            export_obj = Exporter.objects.filter(Export_Industry=Export_Industry, Export_From=Export_From,
+                                                 Export_To=Export_To)
+        return render(request, 'jamii/explorer.html', {'export_obj': export_obj})
     form = ExportRegisterForm()
-    return render(request, 'jamii/explorer.html',{'export_objs': Exporter_Objs, "form":form } )
+    return render(request, 'jamii/explorer.html', {'export_objs': Exporter_Objs, "form": form})
 
 
 def glossary(request):

@@ -126,3 +126,7 @@ a:hover{
 #about_intro{
     padding-top: 20vh;
 }
+
+.event_banner{
+    height: 55vh;
+}

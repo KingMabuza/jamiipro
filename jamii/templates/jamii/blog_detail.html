@@ -1,5 +1,6 @@
 {% extends 'jamii/layout.html' %}
-{% block title %} Blog-Detail | Jamii {% endblock title %}
+{% block title %} {{ post.title }} | Jamii {% endblock title %}
 {% block content %}
-
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.body | safe }}</p>
 {% endblock content %}
