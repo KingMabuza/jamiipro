@@ -1,6 +1,12 @@
 {% extends 'jamii/layout.html' %}
 {% block title %} {{ post.title }} | Jamii {% endblock title %}
 {% block content %}
+    <div class="text-center container">
     <h1>{{ post.title }}</h1>
-    <p>{{ post.body | safe }}</p>
+        <img src="{{ post.cover.url }}" width="500" alt="banner"/>
+        <p>{{ post.date_posted }}</p>
+        <p>{{ post.body | safe }}</p>
+        <a class="btn cta text-white btn-block" href="{% url 'blog' %}">Back</a>
+    </div>
+
 {% endblock content %}

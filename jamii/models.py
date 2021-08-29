@@ -209,12 +209,13 @@ class Exporter(models.Model):
     Export_Industry = models.TextField(max_length=500, choices=Type_of_Export, blank=True)
     Export_From = models.TextField(max_length=500, choices=List_of_Country, blank=True)
     Export_To = models.TextField(max_length=500, choices=List_of_Country, blank=True)
-    Export_Prohibitions = RichTextField(null=True)
-    Export_Sanitary_Phytosanitary_Measures = RichTextField(null=True)
+    Export_Domestic_Requirements = RichTextField(null=True)
+    Export_Product_Requirements = RichTextField(null=True)
+    Export_Market_Conditions = RichTextField(null=True)
+    Export_preShipment_Inspection = RichTextField(null=True)
+    Export_Tariff = RichTextField(null=True)
     Export_Taxes = RichTextField(null=True)
-    Export_License = RichTextField(null=True)
-    regulator = models.CharField(max_length=255, null=True)
-    regulator_contact = models.CharField(max_length=255, null=True)
+    Export_TradePartner = RichTextField(null=True)
 
     def __str__(self):
         return self.Export_Industry

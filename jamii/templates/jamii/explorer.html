@@ -1,32 +1,132 @@
 {% extends 'jamii/layout.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block title %} Explorer | Jamii {% endblock title %}
 {% block content %}
+<div id="explorer_banner">
+
+</div>
 
 {% if export_obj %}
 
-    {% for obj in export_obj %}
-    <div class="div">{{obj.Export_Industry}}</div>
-    <div class="div">{{obj.Export_From }}</div>
-    <div class="div">{{obj.Export_To }}</div>
-    <div class="div">{{ obj.Export_Prohibitions | safe}}</div>
-    <div class="div">{{ obj.Export_License | safe}}</div>
-    <div class="div">{{ obj.Export_Sanitary_Phytosanitary_Measures | safe}}</div>
-    <div>{{ obj.Export_Taxes | safe }}</div>
-    {% endfor %}
-   
-    <a class="btn btn-danger btn-block" href="{% url 'explorer' %}">Back for search</a>
-{% else %}
-<div class="container">
-    <form method="POST" action="trade_explorer"  enctype="multipart/form-data" >
-    {% csrf_token %}
-    {{ form|crispy }}
-    <div class="form-group">
-        <br/>
-        <button type="submit" class="btn cta btn-block text-white">Search</button>
+    <div class="intro">
+        <h1 class="text-white text-center">We Wish You Success As You Tap Into The African Market</h1>
     </div>
-    </form>
+
+    <div class="container">
+    {% for obj in export_obj %}
+     {{ obj.Export_From }} >> {{ obj.Export_To }} >> {{ obj.Export_Industry }}
+  <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Tariff
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>{{ obj.Export_Tariff | safe }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Taxes and Other Fees
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>{{ obj.Export_Taxes | safe}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Domestic Requirements
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>{{ obj.Export_Domestic_Requirements | safe}}</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Product Requirements
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>{{ obj.Export_Product_Requirements | safe}}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Market Conditions
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>{{ obj.Export_Market_Conditions | safe}}</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Pre-Shipment & Inspection
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <p>{{ obj.Export_preShipment_Inspection | safe}}</p>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+    <br/>
+    <a class="btn cta text-white btn-block" href="{% url 'explorer' %}">Back for search</a>
+</div>
+
+
+
+
+{% else %}
+<div class="intro">
+    <h1 class="text-white text-center">Are You Ready To Be Part of The African Market?</h1>
+</div>
+    <br/>
+
+<div class="container">
+    <h3 class="text-center">Find detailed trade and market access-related information based on a multitude of factors: Industry(Export Industry)-Home Nation(Export From)-Destination(Export To).</h3>
+  <div class="card text-white bg-success mt-5 mb-5" style="max-width: 25rem;">
+      <div class="card-header">Explore</div>
+      <div class="card-body">
+          <form method="POST" action="{% url 'explorer' %}"  enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group">
+            <br/>
+            <button type="submit" class="btn cta btn-block text-white">Search</button>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+
 
 {% endif %}
 {% endblock content %}
