@@ -130,3 +130,8 @@ a:hover{
 .event_banner{
     height: 55vh;
 }
+
+#id_Export_Industry{
+    max-width: 500px !important;
+    width: 300px;
+}
