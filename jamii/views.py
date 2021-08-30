@@ -38,15 +38,7 @@ def index(request):
         author.append(myarticles['author'])
     mylist = zip(news, desc, img, url, author)
 
-    obj = Post.objects.get(id=1)
-    blog_post = {
-        'title': obj.title,
-        'cover': obj.cover,
-        'description': obj.description,
-        'date': obj.date_posted,
-        'body': obj.body,
-        'slug': obj.slug
-    }
+    blog_post = Post.objects.all()[:3]
 
     return render(request, 'jamii/home.html', context={"mylist": mylist, "blog_post": blog_post})
 

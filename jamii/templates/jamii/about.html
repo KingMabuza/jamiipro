@@ -1,4 +1,5 @@
 {% extends 'jamii/layout.html' %}
+{% load static %}
 {% block title %} About | Jamii {% endblock title %}
 {% block content %}
     <div id="about_banner">
@@ -7,11 +8,35 @@
     <div class="aboutpage_intro">
         <h1 class="text-white">About Us</h1>
     </div>
-    <div class="container pt-5" id="about_intro">
-        {% for abouts in abouts %}
-            <h3 class="text-center">{{ abouts.name }}</h3>
-            <p class="text-center">{{ abouts.body | safe }}</p>
-        {% endfor %}
+    <div class="container pt-5 pb-5" id="about_intro">
+        <div class="text-center">
+            <img src="{% static 'jamii/jamii_logo.png' %}" width="300px" class="text-center"/>
+        </div>
+        <p>Jamii a product of the Shared Value Africa Initiative(SVAI) and the Pan African Chamber of Commerce(PACCI), aims to boost trade within the
+        african continent through the minimization of the information gap faced by a vast number of SMMEs. With the African continental free trade area(AfCFTA), which stands to open up a customs-free market of over 1.3billion people, Jamii seeks to be a one source of truth on everything AfCFTA and african trade in its entirety, enabling organizations to make trade decisions with factual, easy to access information. </p>
+        <div class="row">
+            <div class="col sm-4">
+                <div class="card" style="width: 18rem;">
+                      <img src="{% static 'jamii/svai.svg' %}" class="card-img-top" alt="svai logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Shared Value Africa Initiative</h5>
+                        <p class="card-text">The Shared Value Africa Initiative (SVAI) is a pan-African organisation and the regional partner of the global Shared Value Initiative business network that are drawn together through a common purpose: to assist and collaborate with organisations to create Shared Value and build prosperous and sustainable economies and societies through focussing on Profit with Purpose. There is a real need for African-driven solutions for African challenges. Adopting a Shared Value business model enables innovative, forward-thinking business to find growth opportunities in addressing social and environmental challenges using the UN Sustainable Development Goals as the guiding principles.</p>
+                        <a href="https://www.svai.africa" class="card-link">Learn More</a>
+                      </div>
+                </div>
+            </div>
+            <div class="col sm-4">
+                <div class="card" style="width: 18rem;">
+                      <img src="{% static 'jamii/pacci-logo.png' %}" class="card-img-top" alt="pacci logo">
+                      <div class="card-body">
+                        <h5 class="card-title">Pan-African Chamber of Commerce</h5>
+                        <p class="card-text">The Pan African Chamber of Commerce and Industry (PACCI) is an independent, non-profit and non-partisan organization established in 2009 to serve Africa’s business by promoting for public policies that will foster continental economic integration, competitiveness, and sustainable growth. PACCI offers its constituents a wide range of services including advocacy for the creation of the African Economic Community, capacity building, and business networking. With more than 50 national chambers of commerce acting as its local focal point, PACCI is the largest business association in Africa, and the continent’s most influential.</p>
+                        <a href="https://www.panafricanchamber.com/" class="card-link">Learn More</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 {% endblock content %}

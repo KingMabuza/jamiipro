@@ -50,7 +50,8 @@ body{
 }
 
 #news_intro{
-    padding-top: 20vh;
+    background-color: rgb(249, 247, 244);
+    padding-top: 5vh;
 }
 
 #contact_banner{
@@ -68,12 +69,12 @@ body{
 #footer h5{
     color: yellow !important;
 }
-a{
+#footer a{
     color: white;
     text-decoration: none;
 }
 
-a:hover{
+#footer a:hover{
     color: yellow;
 }
 
@@ -148,4 +149,72 @@ a:hover{
     background-repeat: no-repeat;
     width: 100%;
     height: 427px;
+}
+
+#explorer_intro{
+    background-color: rgb(249, 247, 244);
+}
+
+a{
+    color: rgb(107, 128, 94);
+}
+
+#blog_banner{
+    background-image: url("blog.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 427px;
+}
+
+#glossary_banner{
+    background-image: url("glossary.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 427px;
+    background-position: center;
+}
+
+#events_banner{
+    background-image: url("events.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 427px;
+}
+
+#opportunity_banner{
+    background-image: url("opportunity.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 427px;
+}
+
+#news_banner{
+    background-image: url("news.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 427px;
+    background-position: bottom;
+}
+
+
+#subscribe_banner{
+    background-image: url("subscribe.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 427px;
+    background-position: center;
+}
+
+input{
+    max-width: 500px;
+}
+
+.blog_intro{
+    padding-top: 5vh;
 }

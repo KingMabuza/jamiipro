@@ -1,13 +1,17 @@
 {% extends 'jamii/layout.html' %}
 {% block title %} Blog | Jamii {% endblock title %}
 {% block content %}
-    <div class="container">
-        <h3>Blog</h3>
+    <div id="blog_banner" class="mb-5">
+
+    </div>
+    <div class="container ">
+        <h1 class="intro text-white">Blog</h1>
         <div class="pt-3">
 
             <div class="row">
                     {% for post in posts %}
-                        <div class="col-sm-4 pt-4 pb-4">
+
+                        <div class="col-sm-4 mt-5 mb-5">
                             <div class="card" style="width: 18rem;">
                                <img src="{{ post.cover.url }}" class="card-img-top" alt="{{ event.name }}">
                                 <div class="card-body">

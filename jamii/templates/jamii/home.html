@@ -64,7 +64,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-              <h3>Objectives</h3>
+              <h3 class="mt-5">Objectives</h3>
               <ul>
                   <li>Create a unified continental market for products and services with free movement of people and capital, paving the way for the Continental Customs Union and the African Customs Union to be established faster.</li>
                   <li>Improve the harmonization and coordination of trade liberalization and facilitation regimes and tools across RECs and Africa in general to increase intra-African trade.</li>
@@ -88,15 +88,19 @@
               </ul>
             </div>
             <div class="col">
-              <h3>AfCFTA Implementation</h3>
-
+              <h3 class="mt-5">AfCFTA Implementation</h3>
+                    <ul>
+                        <li>gives a system for the liberalization of exchange in merchandise and administrations, and a component for debate settlement. For exchange in merchandise, the assertion sets the way for killing taxes on 90 percent of item categories. Nations can actualize tax decreases over a longer period within the case of delicate merchandise or keep up existing tariffs—where the items are excluded—for the remaining 10 percent of item categories (duty lines). The convention on exchange in products incorporates adds on duty concessions, rules of root, traditions participation, exchange help, non-tariff boundaries, specialized obstructions to exchange, sterile and phytosanitary measures, and travel and exchange cures.</li>
+                        <li>Competition policy, investment, and intellectual property rights will all be discussed.</li>
+                        <li>(on e-commerce) to promote agri-food trade by, for example, helping to the expansion of agricultural production, food processing, value chain development, food access, distribution networks, and payment systems</li>
+                    </ul>
             </div>
         </div>
     </div>
 
-    <div id="news_intro">
-         <div class="container">
-                <h3>News</h3>
+    <div id="news_intro" >
+         <div class="container mt-5">
+                <h3 >News</h3>
          </div>
         <div class="container">
             <div class="row">
@@ -116,24 +120,27 @@
         </div>
     </div>
 
-    <div class="blog_intro pt-3">
+    <div class="blog_intro mb-5">
         <div class="container">
             <h3>Blog</h3>
             <br/>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{blog_post.cover.url }}" class="card-img-top" alt="globe">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ blog_post.title }}</h5>
-                            <p class="card-text">{{ blog_post.description }}</p>
-                            <a href="{% url 'blog_detail' blog_post.slug  %}" class="btn cta text-white">Read More</a>
+                    {% for post in blog_post %}
+
+                        <div class="col-sm-4 mt-5 mb-5">
+                            <div class="card" style="width: 18rem;">
+                               <img src="{{ post.cover.url }}" class="card-img-top" alt="{{ event.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <p class="card-text">{{ post.description|slice:":65"|safe }}...</p>
+                                    <a href="{% url 'blog_detail' post.slug  %}" class="btn cta text-white">Read More</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-            </div>
         </div>
     </div>
 
